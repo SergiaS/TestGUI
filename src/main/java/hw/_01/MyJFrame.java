@@ -2,6 +2,7 @@ package main.java.hw._01;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 
 public class MyJFrame extends JFrame {
 
@@ -11,6 +12,7 @@ public class MyJFrame extends JFrame {
 		super.setLocationRelativeTo(null); // чтобы фрейм возникал по центру
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // закрывается по нажатию кнопки
 		super.setLayout(new FlowLayout());
+		super.setIconImage(new ImageIcon("src/main/resources/icon.jpg").getImage());
 		super.setVisible(true);
 	}
 

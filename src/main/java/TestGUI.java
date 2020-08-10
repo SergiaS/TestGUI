@@ -1,43 +1,30 @@
 package main.java;
 
+import com.jtattoo.plaf.aero.AeroLookAndFeel;
+import main.java.hw._01.MyJButton;
+import main.java.hw._01.MyJFrame;
+import main.java.hw._01.MyJPanel;
+
 import javax.swing.*;
-import javax.swing.plaf.metal.MetalLookAndFeel;
 import java.awt.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TestGUI {
 	public static void main(String[] args) {
 		try {
-//			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//			UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-			UIManager.setLookAndFeel(new MetalLookAndFeel()); // команда для изменения внешнего вида внутренних компонентов
+			UIManager.setLookAndFeel(new AeroLookAndFeel()); // команда для изменения внешнего вида внутренних компонентов
 		} catch (UnsupportedLookAndFeelException e) {
-			e.printStackTrace();
+			Logger.getLogger(TestGUI.class.getName()).log(Level.SEVERE, null, e);
 		}
 
 		JFrame.setDefaultLookAndFeelDecorated(true); // команда для изменения внешнего вида самого окна
 
-		JFrame frame = new JFrame("Test Frame");
-		frame.setIconImage(new ImageIcon("https://i-dgtl.ru/wp-content/uploads/2017/01/skype-icon-15.png").getImage());
-//		frame.setIconImage(new ImageIcon("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTY2kUXD6LqDNvdN93NiHhQLlvxAkd8KTtJ6Q&usqp=CAU").getImage());
+		MyJButton button1 = new MyJButton("Button");
 
-		frame.setSize(400, 400);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+		MyJPanel panel = new MyJPanel("Panel", 100, 100, button1);
 
-		frame.setLocationRelativeTo(null);
-
-		FlowLayout fl = new FlowLayout();
-		frame.setLayout(fl);
-
-		JButton button = new JButton("Test Button");
-		button.setSize(300, 200);
-
-		JPanel panel = new JPanel(fl);
-		panel.setBorder(BorderFactory.createEtchedBorder());
-		panel.setSize(300, 300);
-		panel.add(button);
-
-		frame.getContentPane().add(panel);
+		MyJFrame frame = new MyJFrame("Frame", 200, 200, panel);
 
 	}
 }
