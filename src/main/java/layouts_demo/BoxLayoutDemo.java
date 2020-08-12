@@ -1,4 +1,4 @@
-package layouts_demo;
+package main.java.layouts_demo;
 
 import javax.swing.*;
 
