@@ -6,6 +6,7 @@ import main.java.hw._01.MyJFrame;
 import main.java.hw._01.MyJPanel;
 import main.java.hw._01.MyJTextField;
 import main.java.hw._03.Solution;
+import main.java.layouts_demo.AbsoluteLayoutDemo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,20 +35,22 @@ public class TestGUI {
 
 	public static void main(String[] args) {
 
-		try {
-			UIManager.setLookAndFeel(new SmartLookAndFeel());
-		} catch (UnsupportedLookAndFeelException e) {
-			Logger.getLogger(Solution.class.getName()).log(Level.SEVERE, null, e);
-		}
+		new AbsoluteLayoutDemo();
 
-		JFrame.setDefaultLookAndFeelDecorated(true);
-
-		TestGUI testGUI = new TestGUI();
-		testGUI.createLabels();
-		testGUI.createTextFields();
-		testGUI.createButtons();
-		testGUI.createPanels();
-		testGUI.createFrame();
+//		try {
+//			UIManager.setLookAndFeel(new SmartLookAndFeel());
+//		} catch (UnsupportedLookAndFeelException e) {
+//			Logger.getLogger(Solution.class.getName()).log(Level.SEVERE, null, e);
+//		}
+//
+//		JFrame.setDefaultLookAndFeelDecorated(true);
+//
+//		TestGUI testGUI = new TestGUI();
+//		testGUI.createLabels();
+//		testGUI.createTextFields();
+//		testGUI.createButtons();
+//		testGUI.createPanels();
+//		testGUI.createFrame();
 	}
 
 	private void createButtons() {
