@@ -1,18 +1,18 @@
-package main.java;
+package main.java.hw._03;
 
 import com.jtattoo.plaf.smart.SmartLookAndFeel;
 import main.java.hw._01.MyJButton;
 import main.java.hw._01.MyJFrame;
 import main.java.hw._01.MyJPanel;
 import main.java.hw._01.MyJTextField;
-import main.java.hw._03.Solution;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TestGUI {
+public class Solution {
+
 	private MyJButton btnAdd;
 	private MyJButton btnSubtract;
 	private MyJButton btnDivide;
@@ -42,12 +42,12 @@ public class TestGUI {
 
 		JFrame.setDefaultLookAndFeelDecorated(true);
 
-		TestGUI testGUI = new TestGUI();
-		testGUI.createLabels();
-		testGUI.createTextFields();
-		testGUI.createButtons();
-		testGUI.createPanels();
-		testGUI.createFrame();
+		Solution solution = new Solution();
+		solution.createLabels();
+		solution.createTextFields();
+		solution.createButtons();
+		solution.createPanels();
+		solution.createFrame();
 	}
 
 	private void createButtons() {
