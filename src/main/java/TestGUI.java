@@ -1,11 +1,12 @@
 package main.java;
 
 import com.jtattoo.plaf.smart.SmartLookAndFeel;
-import main.java.hw._01.MyJButton;
-import main.java.hw._01.MyJFrame;
-import main.java.hw._01.MyJPanel;
-import main.java.hw._01.MyJTextField;
-import main.java.hw._03.Solution;
+import main.java.calculator.gui.MyJButton;
+import main.java.calculator.gui.MyJFrame;
+import main.java.calculator.gui.MyJPanel;
+import main.java.calculator.gui.MyJTextField;
+import main.java.calculator.listeners.CalcButtonActionListener;
+import main.java.calculator.listeners.CalcTextFieldFocusListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TestGUI {
+
+	public static final String INPUT_NUMBER = "введите число";
+
 	private MyJButton btnAdd;
 	private MyJButton btnSubtract;
 	private MyJButton btnDivide;
@@ -37,7 +41,7 @@ public class TestGUI {
 		try {
 			UIManager.setLookAndFeel(new SmartLookAndFeel());
 		} catch (UnsupportedLookAndFeelException e) {
-			Logger.getLogger(Solution.class.getName()).log(Level.SEVERE, null, e);
+			Logger.getLogger(TestGUI.class.getName()).log(Level.SEVERE, null, e);
 		}
 
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -55,6 +59,8 @@ public class TestGUI {
 		btnSubtract = new MyJButton("Вычитание");
 		btnDivide = new MyJButton("Деление");
 		btnMultiply = new MyJButton("Умножение");
+
+		addButtonListeners();
 	}
 
 	private void createLabels() {
@@ -64,12 +70,14 @@ public class TestGUI {
 	}
 
 	private void createTextFields() {
-		jtxtNumber1 = new MyJTextField(10);
-		jtxtNumber2 = new MyJTextField(10);
+		jtxtNumber1 = new MyJTextField(INPUT_NUMBER,10);
+		jtxtNumber2 = new MyJTextField(INPUT_NUMBER,10);
 
 		jtxtResult = new MyJTextField(15, Color.RED);
 		jtxtResult.setEditable(false); // не изменяемое поле мышей
 		jtxtResult.setFocusable(false); // не изменяемое поле с клавы (TAB)
+
+		addTextFieldListeners();
 	}
 
 	private void createPanels() {
@@ -103,12 +111,26 @@ public class TestGUI {
 		frame = new MyJFrame("Калькулятор", 430, 200, new BorderLayout(2, 2));
 		frame.setMinimumSize(new Dimension(430, 200));
 
-//		frame.setResizable(false); // запрещает приложению менять размер, +убирет кнопку свернуть/развернуть
+		frame.setResizable(false); // запрещает приложению менять размер, +убирет кнопку свернуть/развернуть
 
 		frame.getContentPane().add(panel1, BorderLayout.NORTH);
 		frame.getContentPane().add(panel2, BorderLayout.CENTER);
 		frame.getContentPane().add(panel3, BorderLayout.SOUTH);
 
 		frame.setVisible(true);
+	}
+
+	private void addButtonListeners() {
+		CalcButtonActionListener b1 = new CalcButtonActionListener(jtxtNumber1, jtxtNumber2, jtxtResult);
+
+		btnAdd.addActionListener(b1);
+		btnSubtract.addActionListener(b1);
+		btnDivide.addActionListener(b1);
+		btnMultiply.addActionListener(b1);
+	}
+
+	private void addTextFieldListeners() {
+		jtxtNumber1.addFocusListener(new CalcTextFieldFocusListener(jtxtNumber1));
+		jtxtNumber2.addFocusListener(new CalcTextFieldFocusListener(jtxtNumber2));
 	}
 }
