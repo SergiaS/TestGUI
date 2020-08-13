@@ -1,4 +1,4 @@
-package main.java.listeners;
+package main.java;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,8 +20,5 @@ public class ButtonListener implements ActionListener {
 			JButton tmpButton = (JButton) e.getSource();
 			JOptionPane.showMessageDialog(panel, "test message from " + tmpButton.getText());
 		}
-
-//		System.out.println(e.getSource());
-//		JOptionPane.showMessageDialog(panel, "Yabadabadoo");
 	}
 }
